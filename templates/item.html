@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+{% load static i18n %}
+{% block content %}
+
+<div class="row mx-0">
+    <div class="col-lg-9">
+        <div>
+            <div class="bg-content mb-4">
+                <div class="brown-dashed mb-3">
+                    <h2>{{ article.title }}</h2>
+                </div>
+                <div class="item-info mb-4">
+                    <span><i class="fa-solid fa-tags"></i> {% trans "Категории" %}: 
+                        {% for category in article.categories.all %}
+                            <span><a href="{% url 'getByCategory' id=category.id %}">{{ category.title }},</a></span>
+                        {% endfor %}
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-user"></i> {% trans "Автор" %}:
+                        {{ article.author.last_name }} {{ article.author.first_name }}
+                    </span>
+                </div>
+                <div class="image-date">
+                    <img src="{{ article.image.url }}"class="w-100" alt="{{ article.title }}">
+                    <span>{{ article.created_at|date }}</span>
+                </div>
+                <p class="my-4">{{ article.short_content }}</p>
+                <div>
+                    {{ article.content|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        {% include 'components/search_article.html' %}
+        <div class="bg-content h-75vh">
+            text
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

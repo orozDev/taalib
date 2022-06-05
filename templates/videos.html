@@ -1,0 +1,94 @@
+{% extends 'index.html' %}
+{% load static i18n %}
+{% block content %}
+
+
+    <div class="row mx-0">
+        {% if search is not empty %}
+            <div class="col-12 mb-3">
+                <div class="bg-content">
+                    <h3>{% trans "Результаты поиска" %}:  {{ search }}</h3>
+                </div>
+            </div>
+        {% endif %}
+        <div class="col-12">
+            <div class="bg-content mb-4"><h2 class="text-center">{% trans "Видео ролики" %}</h2></div>
+        </div>
+        <div class="col-lg-9">
+            <div>
+                {% for item in videos %}
+                    <div class="bg-content mb-4">
+                        <div class="brown-dashed mb-3">
+                            <h2 class="text-uppercase">{{ item.title }}</h2>
+                        </div>
+                        <div class="image-date">
+                            <iframe width="100%" height="315" src="{{ item.url }}" 
+                            title="YouTube video player" frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen></iframe>
+                        </div>
+                        <div class="date">{{ item.created_at|date }}</div>
+                        <p class="my-4">{{ item.short_content }}</p>
+                        <div class="item-info">
+                            <span><i class="fa-solid fa-tags"></i> {% trans "Категории" %}: 
+                                {% for category in item.categories.all %}
+                                    <span><a href="{% url 'getByCategoryVideos' id=category.id %}">{{ category.title }},</a></span>
+                                {% endfor %}
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-user"></i> {% trans "Автор" %}:
+                                {{ item.author.last_name }} {{ item.author.first_name }}
+                            </span>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="bg-content">
+                        <h3 class="text-center">
+                            {% trans "Пока ничего не найдено" %}
+                        </h3>
+                    </div>
+                    
+                {% endfor %}
+                {% if videos.has_next or videos.has_previous  %}
+                <div class="mb-4">
+                    <div class="bg-content">  
+                            <div class="pagination">
+                                <ul class="">
+                                    {% if videos.has_previous %}
+                                        <li><a href="?page={{ videos.previous_page_number }}"><i class="fa fa-angle-left"></i></a></li>
+                                    {% endif %}
+                                    {% for i in videos.paginator.page_range %}
+                                        {% if i <= videos.number|add:5 and i >= videos.number|add:-5 %}
+                                            {% if videos.number == i %}
+                                                <li class="active"><a href="#">{{ i }}</a></li>
+                                            {% else %}
+                                                <li><a href="?page={{forloop.counter}}">{{forloop.counter}}</a></li>
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if videos.has_next %}
+                                        <li><a href="?page={{ videos.next_page_number }}"><i class="fa fa-angle-right"></i></a></li>
+                                    {% endif %}
+                                </ul>
+                            </div><!-- .pagination -->        
+                    </div>
+                </div>
+            {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-3 mb-4">
+            {% include 'components/search_video.html' %}
+            <div class="bg-content h-75vh">
+                text
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let bar = document.getElementById('nav_videos');
+        bar.classList.add('active');
+        console.log(bar)
+    </script>
+
+{% endblock content %}
