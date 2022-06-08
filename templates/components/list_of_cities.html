@@ -1,0 +1,10 @@
+{% load i18n tags %}
+{% get_cities as cities %}
+<div class="bg-content mb-4">
+    <h5 class="mb-3">{% trans "Время намаза в Кыргызстане" %}</h5>
+    <div>
+        {% for item in cities %}
+            <div class="mb-2"><a href="{% url 'praytimes' id=item.id %}">{{ item.name }}</a></div>
+        {% endfor %}
+    </div>            
+</div>

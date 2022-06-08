@@ -1,0 +1,150 @@
+{% extends 'index.html' %}
+{% load static i18n tags %}
+{% block content %}
+
+    <div class="row mx-0">
+        <div class="col-lg-9">
+            <div>
+                <div class="bg-content mb-4">
+                {% if error is not True %}
+                    <h3 class="mb-4">{% trans "Время намаза в области" %}  {{ city_name }}</h3> 
+                    <h4 class="mb-3 text-center" id="time">
+                        <span>{% trans "Ваше текущее время" %}</span>
+                        <h2 class="text-center">
+                            <span id="hour"></span> :
+                            <span id="minute"></span> :
+                            <span id="second"></span>  
+                        </h2>  
+                    </h4>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <b class="bold">{% trans "Дата по исламскому календарю" %}:</b>
+                            <span>{{ data.islamic_date|apiIslamicDate }}</span> 
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <b class="bold">{% trans "Дата по григорианскому календарю" %}:</b>
+                            <span>{{ data.date|apiDate }}</span> 
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-6" id="bamdat_{{ data.attributes.ID }}">
+                            <h4 class="text-center">{{ data.praytimes.bamdat }}</h4>
+                            <div class="text-center">Фаджр</div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-6" id="kun_{{ data.attributes.ID }}">
+                            <h4 class="text-center">{{ data.praytimes.kun }}</h4>
+                            <div class="text-center">Восход</div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-6" id="besin_{{ data.attributes.ID }}">
+                            <h4 class="text-center">{{ data.praytimes.besin }}</h4>
+                            <div class="text-center">Зухр</div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-6" id="ekindi_{{ data.attributes.ID }}">
+                            <h4 class="text-center">{{ data.praytimes.ekindi }}</h4>
+                            <div class="text-center">Аср</div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-6" id="aqsham_{{ data.attributes.ID }}">
+                            <h4 class="text-center">{{ data.praytimes.aqsham }}</h4>
+                            <div class="text-center">Магриб</div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-6" id="quptan_{{ data.attributes.ID }}">
+                            <h4 class="text-center">{{ data.praytimes.quptan }}</h4>
+                            <div class="text-center">Иша</div>
+                        </div>
+                        <div class="col-12 counter" style="font-size: 1.2rem">
+                            <b>{% trans "Осталость" %}: </b>
+                        </div>
+                    </div>
+                {% endif %} 
+                </div>      
+            </div>
+        </div>
+        <div class="col-lg-3 mb-4">
+            {% include 'components/search_video.html' %}
+            {% include 'components/list_of_cities.html' %}
+            {% include 'components/last_video.html' %}
+        </div>
+    </div>
+    <script>
+        function check_time(val){
+            let now = new Date();
+            let hour = parseInt(val.split(':')[0]);
+            let minute = parseInt(val.split(':')[1]);
+            let current_hour = parseInt(now.getHours());
+            let current_minute = parseInt(now.getMinutes());
+
+            let total = hour * 60 + minute
+            let total_seconds = current_hour * 60 + current_minute
+
+            if(total > total_seconds) return true;
+            else return false;
+        }
+
+        let times =  '{{ data }}'.replaceAll('&#x27;', '"').replaceAll('None', 'null')
+        times = JSON.parse(times)
+
+        let id = times.attributes.ID;
+        if(check_time(times.praytimes.bamdat)){
+            let temp = document.getElementById(`quptan_${id}`).classList.add('active_praytime');
+            let temp2 = document.getElementById(`bamdat_${id}`).classList.add('count_praytime');
+        }else if(check_time(times.praytimes.kun)){
+            let temp = document.getElementById(`bamdat_${id}`).classList.add('active_praytime');
+            let temp2 = document.getElementById(`kun_${id}`).classList.add('count_praytime');
+        }else if(check_time(times.praytimes.besin)){
+            let temp = document.getElementById(`kun_${id}`).classList.add('active_praytime');
+            let temp2 = document.getElementById(`besin_${id}`).classList.add('count_praytime');
+        }else if(check_time(times.praytimes.ekindi)){
+            let temp = document.getElementById(`besin_${id}`).classList.add('active_praytime');
+            let temp2 = document.getElementById(`ekindi_${id}`).classList.add('count_praytime');
+        }else if(check_time(times.praytimes.aqsham)){
+            let temp = document.getElementById(`ekindi_${id}`).classList.add('active_praytime');
+            let temp2 = document.getElementById(`aqsham_${id}`).classList.add('count_praytime');
+        }else if(check_time(times.praytimes.quptan)){
+            let temp = document.getElementById(`aqsham_${id}`).classList.add('active_praytime');
+            let temp2 = document.getElementById(`quptan_${id}`).classList.add('count_praytime');
+        }
+    </script>    
+        
+    <script>
+        function convertTime(val){
+            let now = new Date();
+            let hour = parseInt(val.split(":")[0]);
+            let minute = parseInt(val.split(":")[1]);
+            let current_hour = parseInt(now.getHours());
+            let current_minute = parseInt(now.getMinutes());
+            let total = (hour * 60) + minute;
+            let total_seconds = (current_hour * 60) + current_minute;
+            let result = total - total_seconds;
+            
+            return [parseInt(result / 60), result % 60]
+            
+        }
+        window.addEventListener('DOMContentLoaded', () => {
+            let item = document.querySelector('.count_praytime');
+            let counter = document.querySelector('.counter');
+            let time = item.children[0].innerText
+            let text = item.children[1].innerText
+            let [hour, minute] = convertTime(time)
+            counter.innerHTML += ` 
+                ${hour} {% trans "часов" %} ${minute} {% trans "минут" %} {% trans "до" %} 
+                ${text[text.length-1] == "a" ? text: text + "a"}
+            `
+        });
+    </script>
+    <script>
+        let h = document.getElementById("hour");
+        let m = document.getElementById("minute");
+        let s = document.getElementById("second");
+        function clock() {
+            let now = new Date();
+            if (now.getHours() < 10) h.innerHTML = "0" + now.getHours();
+            else h.innerHTML = now.getHours();
+            if(now.getMinutes() < 10) m.innerHTML = "0" + now.getMinutes();
+            else m.innerHTML = now.getMinutes();
+            if (now.getSeconds() < 10) s.innerHTML = "0" + now.getSeconds();
+            else s.innerHTML = now.getSeconds();
+        }
+        setInterval(clock, 1000)
+  
+    </script>
+
+{% endblock content %}
+

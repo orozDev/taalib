@@ -7,7 +7,7 @@
         <div>
             <div class="bg-content mb-4">
                 <div class="brown-dashed mb-3">
-                    <h2>{{ article.title }}</h2>
+                    <h4>{{ article.title }}</h4>
                 </div>
                 <div class="item-info mb-4">
                     <span><i class="fa-solid fa-tags"></i> {% trans "Категории" %}: 
@@ -34,9 +34,8 @@
     </div>
     <div class="col-lg-3">
         {% include 'components/search_article.html' %}
-        <div class="bg-content h-75vh">
-            text
-        </div>
+        {% include 'components/list_of_cities.html' %}
+        {% include 'components/last_video.html' %}
     </div>
 </div>
 

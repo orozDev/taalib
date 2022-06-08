@@ -3,6 +3,23 @@
     src: url('../fonts/RobotoCondensed-Regular.ttf');
 }
 
+@font-face {
+    font-family: 'RobotoCondensedBold';
+    src: url('../fonts/RobotoCondensed-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'RobotoCondensedItalic';
+    src: url('../fonts/RobotoCondensed-Italic.ttf');
+}
+
+b, h1, h2, h3, h4, h5, h6{
+    font-family: 'RobotoCondensedBold';
+}
+
+i{
+    font-family: 'RobotoCondensedItalic';
+}
 
 body{
     font-family: 'RobotoCondensed';
@@ -170,3 +187,11 @@ footer{
     -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) inset;
     box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) inset;
 }
+
+.active_praytime{
+    -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    padding: 5px;
+}
+

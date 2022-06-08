@@ -10,4 +10,6 @@ urlpatterns = [
     path('videos/category/<int:id>/', getByCategoryVideos, name='getByCategoryVideos'),
     path('search_article/', search_article, name='search_article'),
     path('search_video/', search_video, name='search_video'),
+    path('praytimes/<int:id>/', praytimes, name='praytimes'),
+    path('praytimes/', allPraytimes, name='allPraytimes'),
 ]

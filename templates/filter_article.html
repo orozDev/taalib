@@ -15,7 +15,7 @@
         </div>
         <div class="col-md-6 mb-2 mb-lg-4">
             <div class="bg-content text-center">
-                <h3><a href="{% url 'getByCategoryVideos' id=category.id %}" class="">{% trans "Видео ролики" %}</a></h3>
+                <h3><a href="{% url 'getByCategoryVideos' id=category.id %}" class="">{% trans "Видеоролики" %}</a></h3>
             </div>
             
         </div>
@@ -24,7 +24,7 @@
                 {% for item in articles %}
                     <div class="bg-content mb-4">
                         <div class="brown-dashed mb-3">
-                            <h2 class="text-uppercase"><a href="{% url 'getItem' id=item.id %}" class="brown-link">{{ item.title }}</a></h2>
+                            <h4 class="text-uppercase"><a href="{% url 'getItem' id=item.id %}" class="brown-link">{{ item.title }}</a></h4>
                         </div>
                         <div class="image-date">
                             <a href="{% url 'getItem' id=item.id %}"><img src="{{ item.image.url }}"class="w-100" alt="{{ item.title }}"></a>
@@ -45,10 +45,10 @@
                         </div>
                     </div>
                     {% empty %}
-                    <div class="bg-content">
-                        <h3 class="text-center">
+                    <div class="bg-content mb-4">
+                        <h5 class="text-center">
                             {% trans "Пока ничего не найдено" %}
-                        </h3>
+                        </h5>
                     </div>
                 {% endfor %}
                 {% if articles.has_next or articles.has_previous  %}
@@ -80,9 +80,8 @@
         </div>
         <div class="col-lg-3 mb-4">
             {% include 'components/search_article.html' %}
-            <div class="bg-content h-75vh">
-                text
-            </div>
+            {% include 'components/list_of_cities.html' %}
+            {% include 'components/last_video.html' %}
         </div>
     </div>
     

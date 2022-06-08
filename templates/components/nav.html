@@ -22,8 +22,16 @@
                 <a href="{% url 'getVideos' %}" class="nav-link" id="nav_videos" aria-current="page">{% trans 'Видео' %}</a>
             </li>
             <li class="nav-item" id="nav_times">
-                <a href="" class="nav-link" id="nav_time" aria-current="page">{% trans 'Время намаза' %}</a>
+                <a href="{% url 'allPraytimes' %}" class="nav-link" id="nav_time" aria-current="page">{% trans 'Время намаза' %}</a>
             </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Язык
+              </a>
+              <ul class="dropdown-menu" style="font-size:1.5rem; min-width: auto !important;" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item active" href="#">🇷🇺</a></li>
+                <li><a class="dropdown-item" href="#">🇰🇬</a></li>
+              </ul
         </ul>     
       </div>
     </div>

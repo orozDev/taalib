@@ -47,9 +47,7 @@ class Articles(TimeStampMixin):
     def save(self, *args, **kwargs):
         super().save()
         img = Image.open(self.image.path)
-
         img.save(self.image.path, quality=20, optimize=True)
- 
 
     def __str__(self):
         return f'{self.title}'
