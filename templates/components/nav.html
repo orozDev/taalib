@@ -1,6 +1,9 @@
 {% load tags %}
 {% load i18n %}
 {% load static %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
 {% categories as categories %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-brown fixed-top">
     <div class="container">
@@ -26,12 +29,19 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Язык
+                {% trans "Язык" %}
               </a>
               <ul class="dropdown-menu" style="font-size:1.5rem; min-width: auto !important;" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item active" href="#">🇷🇺</a></li>
-                <li><a class="dropdown-item" href="#">🇰🇬</a></li>
-              </ul
+                  {% for language in languages %}
+                    <li><a href="/{{ language.code }}/" class="dropdown-item {% if language.code == LANGUAGE_CODE %}active{% endif %}">
+                        {% if language.name == 'Russian' %}
+                          🇷🇺
+                        {% else %}
+                          🇰🇬
+                        {% endif %}
+                    </a></li>
+                {% endfor %}
+              </ul>
         </ul>     
       </div>
     </div>

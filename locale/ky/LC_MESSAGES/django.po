@@ -1,0 +1,227 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-06-09 17:07+0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: core/admin.py:46
+msgid "Изображение"
+msgstr "Сүрөт"
+
+#: core/apps.py:8
+msgid "Данные"
+msgstr "Маалыматтар"
+
+#: core/models.py:11
+msgid "дата добавление"
+msgstr "кошулган датасы"
+
+#: core/models.py:12
+msgid "дата изменения"
+msgstr "өзгөртүлгөн датасы"
+
+#: core/models.py:21
+msgid "категория"
+msgstr "категория"
+
+#: core/models.py:22 core/models.py:41 core/models.py:64
+msgid "категории"
+msgstr "категориялар"
+
+#: core/models.py:25
+msgid "название"
+msgstr "аталышы"
+
+#: core/models.py:33
+msgid "статья"
+msgstr "макала"
+
+#: core/models.py:34
+msgid "статьи"
+msgstr "макалалар"
+
+#: core/models.py:37
+msgid "изображение"
+msgstr "сүрөт"
+
+#: core/models.py:38 core/models.py:62
+msgid "заголовок"
+msgstr "башкы аталышы"
+
+#: core/models.py:39 core/models.py:63
+msgid "краткое описание"
+msgstr "кыскача маалымат"
+
+#: core/models.py:40
+msgid "контент"
+msgstr "контент"
+
+#: core/models.py:42 core/models.py:66
+msgid "автор"
+msgstr "автор"
+
+#: core/models.py:43
+msgid "просмотры"
+msgstr "көрүүлөр"
+
+#: core/models.py:44 core/models.py:67
+msgid "опубликовать"
+msgstr "жарыялоо"
+
+#: core/models.py:58
+msgid "видео ролик"
+msgstr "видеоролик"
+
+#: core/models.py:59
+msgid "видео ролики"
+msgstr "видеороликтер"
+
+#: core/models.py:65
+msgid "ссылка на видео"
+msgstr ""
+
+#: taalib/settings.py:128
+msgid "Russian"
+msgstr "Russian"
+
+#: taalib/settings.py:129
+msgid "Kyrgyz"
+msgstr "Kyrgyz"
+
+#: taalib/settings.py:269
+msgid "Открыть сайт"
+msgstr "Сайтты ачуу"
+
+#: templates/components/last_video.html:4
+msgid "Последний видеоролик"
+msgstr "Акыркы чыгарылган видео"
+
+#: templates/components/list_of_cities.html:4
+msgid "Время намаза в Кыргызстане"
+msgstr "Кыргызстандагы намаздын убакыттары"
+
+#: templates/components/nav.html:14
+msgid "Главная"
+msgstr "Башкы баракча"
+
+#: templates/components/nav.html:22
+msgid "Видео"
+msgstr "Видео"
+
+#: templates/components/nav.html:25 templates/list_praytime.html:9
+msgid "Время намаза"
+msgstr "Намаздын убакыттары"
+
+#: templates/components/nav.html:29
+msgid "Язык"
+msgstr "Тил"
+
+#: templates/components/search_article.html:4
+msgid "Поиск статьи"
+msgstr "Макала издөө"
+
+#: templates/components/search_video.html:4
+msgid "Поиск видеоролика"
+msgstr "Видеоролик издөө0"
+
+#: templates/filter_article.html:12 templates/filter_videos.html:12
+msgid "Статьи"
+msgstr "Макалалар"
+
+#: templates/filter_article.html:18 templates/filter_videos.html:18
+#: templates/videos.html:15
+msgid "Видеоролики"
+msgstr "Видеороликтер"
+
+#: templates/filter_article.html:35 templates/filter_videos.html:38
+#: templates/item.html:13 templates/main.html:26 templates/videos.html:33
+msgid "Категории"
+msgstr "Категориялар"
+
+#: templates/filter_article.html:42 templates/filter_videos.html:45
+#: templates/item.html:20 templates/main.html:33 templates/videos.html:40
+msgid "Автор"
+msgstr "Автор"
+
+#: templates/filter_article.html:50 templates/filter_videos.html:53
+#: templates/main.html:41 templates/videos.html:48
+msgid "Пока ничего не найдено"
+msgstr "Азырынча эч нерсе табылган жок"
+
+#: templates/list_praytime.html:11 templates/praytime.html:12
+msgid "Ваше текущее время"
+msgstr "Сиздин учурдагы убакыт"
+
+#: templates/list_praytime.html:20 templates/praytime.html:21
+msgid "Дата по исламскому календарю"
+msgstr "Ислам календары боюнча дата"
+
+#: templates/list_praytime.html:24 templates/praytime.html:25
+msgid "Дата по григорианскому календарю"
+msgstr "Григориан календары боюнча дата"
+
+#: templates/list_praytime.html:33 templates/praytime.html:10
+msgid "Время намаза в области"
+msgstr "Намаздын убактысы"
+
+#: templates/list_praytime.html:36 templates/praytime.html:30
+msgid "Фаджр"
+msgstr "Фаджр"
+
+#: templates/list_praytime.html:40 templates/praytime.html:34
+msgid "Восход"
+msgstr "Күн чыгышы"
+
+#: templates/list_praytime.html:44 templates/praytime.html:38
+msgid "Зухр"
+msgstr "Зухр"
+
+#: templates/list_praytime.html:48 templates/praytime.html:42
+msgid "Аср"
+msgstr "Аср"
+
+#: templates/list_praytime.html:52 templates/praytime.html:46
+msgid "Магриб"
+msgstr "Магриб"
+
+#: templates/list_praytime.html:56 templates/praytime.html:50
+msgid "Иша"
+msgstr "Иша"
+
+#: templates/list_praytime.html:59 templates/praytime.html:53
+msgid "Осталость"
+msgstr "Калган убакыт"
+
+#: templates/list_praytime.html:142 templates/praytime.html:127
+msgid "часов"
+msgstr "саат"
+
+#: templates/list_praytime.html:142 templates/praytime.html:127
+msgid "минут"
+msgstr "минута"
+
+#: templates/list_praytime.html:142 templates/praytime.html:127
+msgid "до"
+msgstr " "
+
+#: templates/list_praytime.html:143 templates/praytime.html:128
+msgid "a"
+msgstr "га"
+
+#: templates/main.html:8 templates/videos.html:10
+msgid "Результаты поиска"
+msgstr "Издөөнүн жыйынтыгы"

@@ -1,5 +1,6 @@
 {% extends 'index.html' %}
 {% load static i18n tags %}
+{% block title %}| {% trans "Время намаза в области" %}  {{ city_name }}{% endblock title %}
 {% block content %}
 
     <div class="row mx-0">
@@ -25,31 +26,31 @@
                             <b class="bold">{% trans "Дата по григорианскому календарю" %}:</b>
                             <span>{{ data.date|apiDate }}</span> 
                         </div>
-                        <div class="col-lg-2 col-md-3 col-6" id="bamdat_{{ data.attributes.ID }}">
+                        <div class="col-lg-2 col-5 col-6" id="bamdat_{{ data.attributes.ID }}">
                             <h4 class="text-center">{{ data.praytimes.bamdat }}</h4>
-                            <div class="text-center">Фаджр</div>
+                            <div class="text-center">{% trans "Фаджр" %}</div>
                         </div>
-                        <div class="col-lg-2 col-md-3 col-6" id="kun_{{ data.attributes.ID }}">
+                        <div class="col-lg-2 col-5 col-6" id="kun_{{ data.attributes.ID }}">
                             <h4 class="text-center">{{ data.praytimes.kun }}</h4>
-                            <div class="text-center">Восход</div>
+                            <div class="text-center">{% trans "Восход" %}</div>
                         </div>
-                        <div class="col-lg-2 col-md-3 col-6" id="besin_{{ data.attributes.ID }}">
+                        <div class="col-lg-2 col-5 col-6" id="besin_{{ data.attributes.ID }}">
                             <h4 class="text-center">{{ data.praytimes.besin }}</h4>
-                            <div class="text-center">Зухр</div>
+                            <div class="text-center">{% trans "Зухр" %}</div>
                         </div>
-                        <div class="col-lg-2 col-md-3 col-6" id="ekindi_{{ data.attributes.ID }}">
+                        <div class="col-lg-2 col-5 col-6" id="ekindi_{{ data.attributes.ID }}">
                             <h4 class="text-center">{{ data.praytimes.ekindi }}</h4>
-                            <div class="text-center">Аср</div>
+                            <div class="text-center">{% trans "Аср" %}</div>
                         </div>
-                        <div class="col-lg-2 col-md-3 col-6" id="aqsham_{{ data.attributes.ID }}">
+                        <div class="col-lg-2 col-5 col-6" id="aqsham_{{ data.attributes.ID }}">
                             <h4 class="text-center">{{ data.praytimes.aqsham }}</h4>
-                            <div class="text-center">Магриб</div>
+                            <div class="text-center">{% trans "Магриб" %}</div>
                         </div>
-                        <div class="col-lg-2 col-md-3 col-6" id="quptan_{{ data.attributes.ID }}">
+                        <div class="col-lg-2 col-5 col-6" id="quptan_{{ data.attributes.ID }}">
                             <h4 class="text-center">{{ data.praytimes.quptan }}</h4>
-                            <div class="text-center">Иша</div>
+                            <div class="text-center">{% trans "Иша" %}</div>
                         </div>
-                        <div class="col-12 counter" style="font-size: 1.2rem">
+                        <div class="col-12 mt-4 counter" style="font-size: 1.2rem">
                             <b>{% trans "Осталость" %}: </b>
                         </div>
                     </div>
@@ -125,7 +126,7 @@
             let [hour, minute] = convertTime(time)
             counter.innerHTML += ` 
                 ${hour} {% trans "часов" %} ${minute} {% trans "минут" %} {% trans "до" %} 
-                ${text[text.length-1] == "a" ? text: text + "a"}
+                ${text[text.length-1] == "a" ? text: text + '{% trans "a" %}'}
             `
         });
     </script>

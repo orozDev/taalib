@@ -26,7 +26,6 @@ urlpatterns = [
 ] + i18n_patterns(
     path('i18n/', include('django.conf.urls.i18n')),
     path('', include('core.urls')),
-    prefix_default_language=False
 )
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
